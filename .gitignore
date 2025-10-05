@@ -1,4 +1,7 @@
 # Ignore virtual environment folder
 env/
+temp_auto_push.bat
 # Ignore Python cache files
 __pycache__/
+.gitignore
+temp_interactive_push.bat

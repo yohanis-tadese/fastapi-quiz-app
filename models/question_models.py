@@ -5,3 +5,4 @@ class Question(Base):
     __tablename__ = "questions"
     id = Column(Integer, primary_key=True, index=True)
     question_text = Column(Text, nullable=False)
+    category_id = Column(Integer, ForeignKey("categories.id"))
