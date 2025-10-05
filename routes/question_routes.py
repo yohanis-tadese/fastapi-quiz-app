@@ -1,9 +1,9 @@
-from fastapi import APIRouter, Depends
 from typing import List
-from controllers import question_controller as controller
+from fastapi import APIRouter, Depends
+import controllers.index as controller
 from sqlalchemy.orm import Session
 import schemas
-from db import get_db
+from config.db import get_db
 
 router = APIRouter()
 
@@ -24,5 +24,9 @@ async def delete_question(question_id: int, db: Session = Depends(get_db)):
     return controller.delete_question(question_id, db)
 
 @router.put("/{question_id}", response_model=schemas.Question)
-async def update_question(question_id: int, updated_question: schemas.Question, db: Session = Depends(get_db)):
+async def update_question(
+    question_id: int,
+    updated_question: schemas.Question,
+    db: Session = Depends(get_db)
+):
     return controller.update_question(question_id, updated_question, db)

@@ -1,9 +1,9 @@
 from typing import List
 from fastapi import APIRouter, Depends
-import controllers.choice_controller as controller
+import controllers.index as controller
 from sqlalchemy.orm import Session
 import schemas
-from db import get_db
+from config.db import get_db
 
 router = APIRouter()
 

@@ -1,10 +1,9 @@
 from fastapi import FastAPI
-import models
-from db import engine
-from routes import question_routes, choice_routes
+from config.db import engine
+from models import index as model_index
+from routes import index as routes_index
 
 app = FastAPI()
-models.Base.metadata.create_all(bind=engine)
+model_index.Base.metadata.create_all(bind=engine)
 
-app.include_router(question_routes.router, prefix="/questions", tags=["Questions"])
-app.include_router(choice_routes.router, prefix="/choices", tags=["Choices"])
+routes_index.setup_routes(app)
